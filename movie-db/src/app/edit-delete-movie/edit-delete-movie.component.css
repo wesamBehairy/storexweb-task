@@ -1,0 +1,28 @@
+.back {
+    background-color: #121418;
+    min-height: 100vh;
+  }
+
+  .form-control:focus ,.s_btn .btn:focus {
+    box-shadow: 0 0 0 0.25rem #fff;
+  }
+  
+  .input_style {
+    background-color: #222222;
+    border: none;
+    color: #888b90;
+  }
+
+  .second {
+    color: #888b90;
+  }
+
+  .invalid-feedback{
+    display: block;
+  }
+
+  .s_btn {
+    background: #b3ffab;
+    background: -webkit-linear-gradient(to left, #12fff7, #b3ffab);
+    background: linear-gradient(to left, #12fff7, #b3ffab);
+  }

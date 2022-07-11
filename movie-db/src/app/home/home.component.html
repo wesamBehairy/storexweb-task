@@ -1,0 +1,39 @@
+<section class="back">
+    <div class="container">
+
+        <div class="row pt-5" *ngIf="error_message">
+
+            <div class="alert alert-danger py-0">
+                <p class="mb-0"> {{ error_message }} </p>
+            </div>
+
+        </div>
+
+        <div class="row pt-5">
+            <div *ngFor="let movie of movies" class="col-lg-3 col-md-6 mb-5">
+                <div class="movie">
+                    <a>
+                        <img onerror="this.onerror=null;this.src='./assets/images/default.png';" alt="movie image"
+                            [src]="image_prefix+movie.image" class="w-100">
+
+                        <div class="mb-4">
+                            <h3 class="h5 mt-2 disc"> {{movie.name}} </h3>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-danger" [routerLink]="['/EditDeleteMovie' , movie.id]">Edit</button>
+                            <button class="btn btn-danger" (click)="onDelete(movie.id)">Delete</button>
+                        </div>
+
+
+                    </a>
+                </div>
+            </div>
+
+            <div *ngIf="!movies.length" class="text-white fw-bold text-center">
+                <h2> no movies </h2>
+            </div>
+
+        </div>
+    </div>
+</section>

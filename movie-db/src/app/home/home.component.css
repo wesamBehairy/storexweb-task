@@ -1,0 +1,10 @@
+.back {
+  background-color: #121418;
+  min-height: 100vh;
+}
+.movie a {
+  text-decoration: none;
+  color: #fff;
+}
+
+

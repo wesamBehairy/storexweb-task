@@ -1,0 +1,37 @@
+.back {
+    background-color: #121418;
+    min-height: 100vh;
+  }
+  
+  .second {
+    color: #888b90;
+  }
+  
+  .form-control:focus ,.s_btn .btn:focus {
+    box-shadow: 0 0 0 0.25rem #fff;
+  }
+  
+  .input_style {
+    background-color: #222222;
+    border: none;
+    color: #888b90;
+  }
+  
+  .s_btn {
+    background: #b3ffab;
+    background: -webkit-linear-gradient(to left, #12fff7, #b3ffab);
+    background: linear-gradient(to left, #12fff7, #b3ffab);
+  }
+
+  .invalid-feedback{
+    display: block;
+  }
+
+  .border-gradient {
+    border: 2px solid;
+    border-image-slice: 1;
+    border-width: 2px;
+    border-image-source: linear-gradient(to left, #12fff7, #b3ffab);
+    padding: 5px;
+  }
+  

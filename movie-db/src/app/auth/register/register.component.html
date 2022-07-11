@@ -1,0 +1,95 @@
+<section class="back pt-5">
+
+    <div class="container">
+
+        <div class="row pt-5" *ngIf="error_message">
+
+            <div class="alert alert-danger py-0">
+                <p class="mb-0"> {{ error_message }} </p>
+            </div>
+
+        </div>
+
+        <div class="row mb-3">
+            <div class="mx-auto text-center header col-5 pt-5">
+                <h1 class="text-white mb-4"> create your free Account </h1>
+                <p class="second"> create your free Account , we are glad that you joined us</p>
+            </div>
+        </div>
+
+
+        <div class="row pt-5 justify-content-center">
+
+            <div class="col-md-7">
+
+                <form [formGroup]="RegisterForm" (ngSubmit)="onSignUp(RegisterForm)">
+
+
+                    <div class="mb-3">
+
+                        <div class="form-floating">
+                            <input type="text" class="form-control input_style" formControlName="name"
+                                [ngClass]="[RegisterForm.get('name')?.errors != null && RegisterForm.get('name')?.touched ? 'is-invalid':''  , RegisterForm.get('name')?.errors == null && RegisterForm.get('name')?.touched ? 'is-valid':'']">
+                            <label class="second" for="floatingInput">name</label>
+                        </div>
+
+                        <div class="invalid-feedback"
+                            *ngIf="RegisterForm.get('name')?.errors != null && RegisterForm.get('name')?.touched && RegisterForm.get('name')?.errors?.['required']">
+                            name is required.
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <div class="form-floating">
+                            <input type="email" class="form-control input_style" formControlName="email"
+                                [ngClass]="[RegisterForm.get('email')?.errors != null && RegisterForm.get('email')?.touched ? 'is-invalid':''  , RegisterForm.get('email')?.errors == null && RegisterForm.get('email')?.touched ? 'is-valid':'']">
+                            <label class="second" for="floatingInput">Email address</label>
+                        </div>
+
+                        <div class="invalid-feedback"
+                            *ngIf="RegisterForm.get('email')?.errors != null && RegisterForm.get('email')?.touched && RegisterForm.get('email')?.errors?.['required']">
+                            Email is required.
+                        </div>
+
+                        <div class="invalid-feedback"
+                            *ngIf="RegisterForm.get('email')?.errors != null && RegisterForm.get('email')?.touched && RegisterForm.get('email')?.errors?.['email']">
+                            Email is not vaild.
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <div class="form-floating">
+                            <input type="password" class="form-control input_style" formControlName="password"
+                                [ngClass]="[RegisterForm.get('password')?.errors != null && RegisterForm.get('password')?.touched ? 'is-invalid':''  , RegisterForm.get('password')?.errors == null && RegisterForm.get('password')?.touched ? 'is-valid':'']">
+                            <label class="second" for="floatingInput">Password</label>
+                        </div>
+
+                        <div class="invalid-feedback"
+                            *ngIf="RegisterForm.get('password')?.errors != null && RegisterForm.get('password')?.touched && RegisterForm.get('password')?.errors?.['required']">
+                            password is required.
+                        </div>
+
+                        <div class="invalid-feedback"
+                            *ngIf="RegisterForm.get('password')?.errors != null && RegisterForm.get('password')?.touched && RegisterForm.get('password')?.errors?.['pattern']">
+                            The password must be at least 5 characters.
+                        </div>
+
+                    </div>
+
+                    <div class="s_btn">
+                        <button type="submit" class="btn fw-bold p-3 w-100" [disabled]="RegisterForm.invalid">
+                            Create Account
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,112 @@
+<section class="back pt-5">
+
+    <div class="container">
+
+        <div class="row pt-5" *ngIf="error_message">
+
+            <div class="alert alert-danger py-0">
+                <p class="mb-0"> {{ error_message }} </p>
+            </div>
+
+        </div>
+
+        <div class="row pt-5 justify-content-center">
+
+            <div class="col-md-7">
+
+                <form [formGroup]="createMovieForm" (ngSubmit)="oncreateMovie(createMovieForm)">
+
+                    <div class="mb-3">
+
+                        <div class="form-floating">
+                            <input type="text" class="form-control input_style" formControlName="name" [ngClass]="[
+                                createMovieForm.get('name')?.errors != null &&
+                                createMovieForm.get('name')?.touched ? 'is-invalid':''  ,
+                                createMovieForm.get('name')?.errors == null &&
+                                createMovieForm.get('name')?.touched ? 'is-valid':'']">
+                            <label class="second" for="floatingInput">name</label>
+                        </div>
+
+                        <div class="invalid-feedback" *ngIf="
+                            createMovieForm.get('name')?.errors != null &&
+                            createMovieForm.get('name')?.touched &&
+                            createMovieForm.get('name')?.errors?.['required']">
+                            name is required.
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <div class="form-floating">
+                            <input type="text" class="form-control input_style" formControlName="description" [ngClass]="[
+                                createMovieForm.get('description')?.errors != null &&
+                                createMovieForm.get('description')?.touched ? 'is-invalid':''  ,
+                                createMovieForm.get('description')?.errors == null &&
+                                createMovieForm.get('description')?.touched ? 'is-valid':'']">
+                            <label class="second" for="floatingInput">description</label>
+                        </div>
+
+                        <div class="invalid-feedback" *ngIf="
+                            createMovieForm.get('description')?.errors != null &&
+                            createMovieForm.get('description')?.touched &&
+                            createMovieForm.get('description')?.errors?.['required']">
+
+                            description is required.
+                        </div>
+
+                    </div>
+
+                    <div class="mt-4 mb-4">
+
+                        <input (change)="handleFileInput($event)" type="file" class="form-control input_style"
+                            formControlName="image" [ngClass]="[
+                            createMovieForm.get('image')?.errors != null &&
+                            createMovieForm.get('image')?.touched ? 'is-invalid':''  ,
+                            createMovieForm.get('image')?.errors == null &&
+                            createMovieForm.get('image')?.touched ? 'is-valid':'']">
+
+                        <div class="invalid-feedback" *ngIf="
+                            createMovieForm.get('image')?.errors != null &&
+                            createMovieForm.get('image')?.touched && 
+                            createMovieForm.get('image')?.errors?.['required']">
+                            Image is required.
+                        </div>
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <select class="input_style form-select" formControlName="category_id" [ngClass]="[
+                        createMovieForm.get('category_id')?.errors != null &&
+                        createMovieForm.get('category_id')?.touched ? 'is-invalid':''  ,
+                        createMovieForm.get('category_id')?.errors == null  &&
+                        createMovieForm.get('category_id')?.touched ? 'is-valid':'']">
+                            <option disabled value="null"> select Category </option>
+
+                            <option *ngFor="let cat of categories" [value]="cat.id"> {{cat?.name}} </option>
+
+                        </select>
+
+
+                        <div class="invalid-feedback" *ngIf="
+                            createMovieForm.get('category_id')?.errors != null &&
+                            createMovieForm.get('category_id')?.touched &&
+                            createMovieForm.get('category_id')?.errors?.['required']">
+                            select Category is required.
+                        </div>
+                    </div>
+
+                    <div class="s_btn">
+                        <button type="submit" class="btn fw-bold p-3 w-100" [disabled]="createMovieForm.invalid">
+                            Create Movie
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</section>
